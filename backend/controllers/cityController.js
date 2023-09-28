@@ -21,7 +21,7 @@ exports.getCityByName = async (req, res) => {
       res.status(404).json({ error: 'City not found' });
     }
   } catch (error) {
-    res.status(500).json({ error: 'Internal Server Error' });
+    res.status(500).json({ error: 'Internal Server Err' });
   }
 };
 

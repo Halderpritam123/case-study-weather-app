@@ -9,7 +9,7 @@ router.get('/', cityController.getAllCities);
 router.get('/:id', cityController.getCityById); // New route for getting a city by ID
 
 // Get city by name
-router.get('/:name', cityController.getCityByName);
+router.get('/search/:name', cityController.getCityByName);
 
 // Create a new city
 router.post('/', cityController.createCity);

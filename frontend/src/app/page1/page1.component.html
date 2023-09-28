@@ -1,0 +1,61 @@
+<div class="page1-container">
+    <div class="search-bar">
+      <input type="text" placeholder="Search City" id="city-input" [(ngModel)]="selectedCity" />
+      <button (click)="searchCity()">Search</button>
+    </div>
+    <button class="city-list-button" (click)="openCityListModal()">View City List</button>
+  </div>
+  
+  <!-- City List Modal -->
+  <div class="city-list-modal" [ngClass]="{'modal-open': isModalOpen}">
+    <div class="modal-content">
+      <span class="close-button" (click)="closeCityListModal()">&times;</span>
+      <h2>City List</h2>
+      <ul>
+        <li *ngFor="let city of cities" (click)="selectCity(city.name)">
+          {{ city.name }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+ <!-- ... (previous code) -->
+
+<!-- City Data Table -->
+<div *ngIf="searchResults.length > 0" class="city-data-container">
+    <h2>City Data</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>City</th>
+          <th><i></i> Temperature (°C)</th>
+          <th><i></i> Humidity (%)</th>
+          <th><i></i> Wind Speed (m/s)</th>
+          <th><i></i> Sunrise</th>
+          <th><i></i> Sunset</th>
+          <th><i></i> Cloud Percentage (%)</th>
+          <th><i></i> Min Temperature (°C)</th>
+          <th><i></i> Max Temperature (°C)</th>
+          <th><i></i> Wind Degrees</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let city of searchResults; let i = index">
+          <td>{{ city.name }}</td>
+          <td><i></i> {{ city.current_weather.temp }}</td>
+          <td><i></i> {{ city.current_weather.humidity }}</td>
+          <td><i></i> {{ city.current_weather.wind_speed }}</td>
+          <td><i></i> {{ formatTime(city.current_weather.sunrise) }}</td>
+          <td><i></i> {{ formatTime(city.current_weather.sunset) }}</td>
+          <td><i></i> {{ city.current_weather.cloud_pct }}</td>
+          <td><i></i> {{ city.current_weather.min_temp }}</td>
+          <td><i></i> {{ city.current_weather.max_temp }}</td>
+          <td><i></i> {{ city.current_weather.wind_degrees }}</td>
+          <td><button (click)="editCity(i)"><i class="fas fa-edit"></i></button></td>
+          <td><button (click)="deleteCity(i)"><i class="fas fa-trash"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
