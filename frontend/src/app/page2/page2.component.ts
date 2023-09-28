@@ -1,3 +1,5 @@
+// page2.component.ts
+
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./page2.component.css']
 })
 export class Page2Component {
+  isHelpPopupOpen: boolean = false;
 
+  showHelpPopup() {
+    this.isHelpPopupOpen = true;
+  }
+
+  closeHelpPopup() {
+    this.isHelpPopupOpen = false;
+  }
 }
