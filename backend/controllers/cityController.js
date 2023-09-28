@@ -27,9 +27,8 @@ exports.getCityByName = async (req, res) => {
 
 // Create a new city
 exports.createCity = async (req, res) => {
-  const { name, current_weather } = req.body;
   try {
-    const city = new City({ name, current_weather });
+    const city = new City(req.body);
     await city.save();
     res.status(201).json(city);
   } catch (error) {
@@ -40,11 +39,10 @@ exports.createCity = async (req, res) => {
 // Update city by ID
 exports.updateCityById = async (req, res) => {
   const cityId = req.params.id;
-  const { name, current_weather } = req.body;
   try {
     const updatedCity = await City.findByIdAndUpdate(
       cityId,
-      { name, current_weather },
+      req.body,
       { new: true }
     );
     if (updatedCity) {

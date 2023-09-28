@@ -148,4 +148,49 @@
   
   /* Additional styles can be added as per your design */
   
+  .modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  
+  
+  label {
+    display: inline-block; /* Display labels inline */
+    width: 30%; /* Adjust the width based on your design */
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  input[type="text"] {
+    width: 65%; /* Adjust the width based on your design */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+  } 
+  /* Style for the buttons */
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #007BFF; /* Blue color, you can change it */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+  }
+
+  
+  
+  
+  
   

@@ -2,18 +2,15 @@ const mongoose = require('mongoose');
 
 const citySchema = new mongoose.Schema({
   name: { type: String, required: true },
-  current_weather: {
-    cloud_pct: Number,
-    temp: Number,
-    feels_like: Number,
-    humidity: Number,
-    min_temp: Number,
-    max_temp: Number,
-    wind_speed: Number,
-    wind_degrees: Number,
-    sunrise: Number,
-    sunset: Number,
-  },
+    cloud_pct: String,
+    temp: String,
+    humidity: String,
+    min_temp: String,
+    max_temp: String,
+    wind_speed: String,
+    wind_degrees: String,
+    sunrise: String,
+    sunset: String,
 },{
     versionKey:false
 });
