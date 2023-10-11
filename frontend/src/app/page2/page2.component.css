@@ -93,6 +93,7 @@ width: 50px;
   margin-right: 5%;
   height: 80%;
   filter: drop-shadow(5px 5px 10px #555);
+  
 }
 
 @media (max-width: 768px) {
