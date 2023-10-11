@@ -1,0 +1,23 @@
+<!-- page2.component.html -->
+
+<div class="help-container">
+      
+    <!-- Include Page1Component within Page2Component -->
+    <button class="help-button" (click)="showHelpPopup()">Help</button>
+
+    <!-- Help Popup -->
+    <div class="help-popup"*ngIf="isHelpPopupOpen">
+      <div class="popup-content">
+        <span class="close-button" (click)="closeHelpPopup()">&times;</span>
+        <h2>Weather App Help</h2>
+        <p>This Weather App allows you to:</p>
+        <ul>
+          <li>Search for weather data of different cities.</li>
+          <li>View detailed weather information such as temperature, humidity, wind speed, sunrise, sunset, and more.</li>
+          <li>Add new cities to track their weather conditions.</li>
+          <li>Delete cities from your list.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  

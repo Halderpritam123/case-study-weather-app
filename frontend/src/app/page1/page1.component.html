@@ -1,100 +1,150 @@
 <div class="page1-container">
-    <h1>Weather App</h1>
-    <div class="search-bar">
-      <input type="text" placeholder="Search City" id="city-input" [(ngModel)]="selectedCity" />
-      <button (click)="searchCity()">Search</button>
-    </div>
-    <button class="city-list-button" (click)="openCityListModal()">View City List</button>
-    <button class="add-city-button" (click)="openAddCityModal()">Add City</button>
+  <h1 style="font-weight: bold;color: black;">Weather App</h1>
+  <div class="search-bar">
+    <input type="text" placeholder="Search City" id="city-input" [(ngModel)]="selectedCity" />
+    <button (click)="searchCity()">Search</button>
   </div>
-  
-  <!-- City List Modal -->
-  <div class="city-list-modal" [ngClass]="{'modal-open': isModalOpen}">
-    <div class="modal-content">
-      <span class="close-button" (click)="closeCityListModal()">&times;</span>
-      <h2>City List</h2>
-      <ul>
-        <li *ngFor="let city of cities" (click)="selectCity(city.name)">
-          {{ city.name }}
-        </li>
-      </ul>
-    </div>
+  <button class="city-list-button" (click)="openCityListModal()">View City List</button>
+  <button class="add-city-button" (click)="openAddCityModal()"><i class="fa fa-plus"></i>Add City</button>
+</div>
+<div class="loader" *ngIf="isLoading"></div>
+<!-- City List Modal -->
+<div class="city-list-modal" [ngClass]="{'modal-open': isModalOpen}">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeCityListModal()">&times;</span>
+    <h2>City List</h2>
+    <ul>
+      <li *ngFor="let city of cities" (click)="selectCity(city.name)">
+        {{ city.name }}
+      </li>
+    </ul>
   </div>
-  
-  <!-- City Data Table -->
-  <div *ngIf="searchResults.length > 0" class="city-data-container">
-    <h2>City Data</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>City</th>
-          <th><i></i> Temperature (°C)</th>
-          <th><i></i> Humidity (%)</th>
-          <th><i></i> Wind Speed (m/s)</th>
-          <th><i></i> Sunrise</th>
-          <th><i></i> Sunset</th>
-          <th><i></i> Cloud Percentage (%)</th>
-          <th><i></i> Min Temperature (°C)</th>
-          <th><i></i> Max Temperature (°C)</th>
-          <th><i></i> Wind Degrees</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let city of searchResults">
-          <td>{{ city.name }}</td>
-          <td><i></i> {{ city.temp }}</td>
-          <td><i></i> {{ city.humidity }}</td>
-          <td><i></i> {{ city.wind_speed }}</td>
-          <td><i></i> {{ formatTime(city.sunrise) }}</td>
-          <td><i></i> {{ formatTime(city.sunset) }}</td>
-          <td><i></i> {{ city.cloud_pct }}</td>
-          <td><i></i> {{ city.min_temp }}</td>
-          <td><i></i> {{ city.max_temp }}</td>
-          <td><i></i> {{ city.wind_degrees }}</td>
-          <td><i>edit</i></td>
-          <td><i (click)="deleteCity(city._id)">delete</i></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  
-  <!-- City Form Modal -->
-  <div class="add-city-modal" *ngIf="isAddCityModalOpen">
-    <div class="modal-content">
-      <span class="close-button" (click)="closeAddCityModal()">&times;</span>
-      <h2>Add City</h2>
-      <form [formGroup]="cityForm" (ngSubmit)="addCity()">
-        <label for="name">City Name:</label>
-        <input type="text" id="name" formControlName="name" />
-  
-        <label for="temp">Temperature (°C):</label>
-        <input type="text" id="temp" formControlName="temp" />
+</div>
 
-        <label for="humidity">Humidity (%):</label>
-        <input type="text" id="humidity" formControlName="humidity" />
-        <label for="wind_speed">Wind Speed (m/s):</label>
-        <input type="text" id="wind_speed" formControlName="wind_speed" />
-        <label for="sunrise">Sunrise:</label>
-        <input type="text" id="sunrise" formControlName="sunrise" />
-        <label for="sunset">Sunset:</label>
-        <input type="text" id="sunset" formControlName="sunset" />
-        <label for="cloud_pct">Cloud Percentage (%):</label>
-        <input type="text" id="cloud_pct" formControlName="cloud_pct" />
-        <label for="min_temp">Min Temperature (°C):</label>
-        <input type="text" id="min_temp" formControlName="min_temp" />
-        <label for="max_temp">Max Temperature (°C):</label>
-        <input type="text" id="max_temp" formControlName="max_temp" />
-        <label for="wind_degrees">Wind Degrees:</label>
-        <input type="text" id="wind_degrees" formControlName="wind_degrees" />
+<!-- City Data Table -->
+<div *ngIf="searchResults.length > 0 && !cityDeleted && showtable && !notFound" class="city-data-container">
+  <h2>City Data</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>City</th>
+        <th><i></i> Temperature (°C)</th>
+        <th><i></i> Humidity (%)</th>
+        <th><i></i> Wind Speed (m/s)</th>
+        <th><i></i> Sunrise</th>
+        <th><i></i> Sunset</th>
+        <th><i></i> Cloud Percentage (%)</th>
+        <th><i></i> Min Temperature (°C)</th>
+        <th><i></i> Max Temperature (°C)</th>
+        <th><i></i> Wind Degrees</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let city of searchResults">
+        <td>{{ city.name }}</td>
+        <td><i></i> {{ city.temp }}</td>
+        <td><i></i> {{ city.humidity }}</td>
+        <td><i></i> {{ city.wind_speed }}</td>
+        <td><i></i> {{ formatTime(city.sunrise) }}</td>
+        <td><i></i> {{ formatTime(city.sunset) }}</td>
+        <td><i></i> {{ city.cloud_pct }}</td>
+        <td><i></i> {{ city.min_temp }}</td>
+        <td><i></i> {{ city.max_temp }}</td>
+        <td><i></i> {{ city.wind_degrees }}</td>
+        <td><i class="fa fa-edit" (click)="openEditForm(city)"></i></td>
+<td><i class="fa fa-trash" style="color: red;" (click)="deleteCity(city._id)"></i></td>
 
-  
-        <!-- Add other form controls here for the rest of the properties -->
-  
-        <button type="submit">Add</button>
-        <button type="button" (click)="closeAddCityModal()">Cancel</button>
-      </form>
-    </div>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div *ngIf="cityDeleted" class="city-deleted-message">
+  City data has been deleted.
+</div>
+<div *ngIf="notFound" class="city-deleted-message">
+  City Not Found.
+</div>
+
+ <!-- City Form Modal -->
+ <div class="add-city-modal" *ngIf="isAddCityModalOpen">
+  <div class="modal-content">
+    <span class="close-button" (click)="closeAddCityModal()">&times;</span>
+    <h2>Add City</h2>
+    <form [formGroup]="cityForm" (ngSubmit)="addCity()">
+      <label for="name">City Name:</label>
+      <input type="text" id="name" formControlName="name" />
+
+      <label for="temp">Temperature (°C):</label>
+      <input type="number" id="temp" formControlName="temp" />
+
+      <label for="humidity">Humidity (%):</label>
+      <input type="number" id="humidity" formControlName="humidity" />
+      <label for="wind_speed">Wind Speed (m/s):</label>
+      <input type="number" id="wind_speed" formControlName="wind_speed" />
+      <label for="sunrise">Sunrise:</label>
+      <input type="number" id="sunrise" formControlName="sunrise" />
+      <label for="sunset">Sunset:</label>
+      <input type="number" id="sunset" formControlName="sunset" />
+      <label for="cloud_pct">Cloud Percentage (%):</label>
+      <input type="number" id="cloud_pct" formControlName="cloud_pct" />
+      <label for="min_temp">Min Temperature (°C):</label>
+      <input type="number" id="min_temp" formControlName="min_temp" />
+      <label for="max_temp">Max Temperature (°C):</label>
+      <input type="number" id="max_temp" formControlName="max_temp" />
+      <label for="wind_degrees">Wind Degrees:</label>
+      <input type="number" id="wind_degrees" formControlName="wind_degrees" />
+      <br/>
+      <br/>
+      <!-- Add other form controls here for the rest of the properties -->
+
+      <button type="submit">Add</button>
+      <button type="button" (click)="closeAddCityModal()">Cancel</button>
+    </form>
   </div>
-  
+</div>
+
+<!-- Edit City Form Modal -->
+<div class="edit-city-modal" *ngIf="isEditFormOpen">
+  <div class="modal-content">
+    <h2>Edit City</h2>
+    <form [formGroup]="cityForm" (ngSubmit)="saveCityEdits()">
+      <label for="name">City Name:</label>
+      <input type="text" id="name" formControlName="name" [(ngModel)]="editingCity.name" />
+
+      <label for="temp">Temperature (°C):</label>
+      <input type="number" id="temp" formControlName="temp" [(ngModel)]="editingCity.temp" />
+
+      <label for="humidity">Humidity (%):</label>
+      <input type="number" id="humidity" formControlName="humidity" [(ngModel)]="editingCity.humidity" />
+
+      <label for="wind_speed">Wind Speed (m/s):</label>
+      <input type="number" id="wind_speed" formControlName="wind_speed" [(ngModel)]="editingCity.wind_speed" />
+
+      <label for="sunrise">Sunrise:</label>
+      <input type="number" id="sunrise" formControlName="sunrise" [(ngModel)]="editingCity.sunrise" />
+
+      <label for="sunset">Sunset:</label>
+      <input type="number" id="sunset" formControlName="sunset" [(ngModel)]="editingCity.sunset" />
+
+      <label for="cloud_pct">Cloud Percentage (%):</label>
+      <input type="number" id="cloud_pct" formControlName="cloud_pct" [(ngModel)]="editingCity.cloud_pct" />
+
+      <label for="min_temp">Min Temperature (°C):</label>
+      <input type="number" id="min_temp" formControlName="min_temp" [(ngModel)]="editingCity.min_temp" />
+
+      <label for="max_temp">Max Temperature (°C):</label>
+      <input type="number" id="max_temp" formControlName="max_temp" [(ngModel)]="editingCity.max_temp" />
+
+      <label for="wind_degrees">Wind Degrees:</label>
+      <input type="number" id="wind_degrees" formControlName="wind_degrees" [(ngModel)]="editingCity.wind_degrees" />
+<br/>
+<br>
+      <!-- Include input fields for editing city data, save button, and close button -->
+      <button type="submit">Save</button>
+      <button type="button" (click)="closeEditForm()">Close</button>
+    </form>
+  </div>
+</div>
+<app-help-btn></app-help-btn>

@@ -1,196 +1,369 @@
+/* General Styles */
+
+/* Add a background color to the entire page */
+body {
+  background-color: #f5f5f5; /* Light gray background color */
+}
+
+/* Header Section Styles */
+
+/* Style the header section */
 .page1-container {
-    text-align: center;
-    padding: 20px;
-  }
-  
-  h1 {
-    font-size: 28px;
-    color: #333;
-  }
-  
-  .search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  #city-input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin-right: 10px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  .city-list-button {
-    background-color: #28a745;
-    margin-top: 10px;
-  }
-  
-  .city-list-button:hover {
-    background-color: #1d7d36;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  li {
-    cursor: pointer;
-    padding: 10px;
-    transition: background-color 0.3s ease;
-  }
-  
-  li:hover {
-    background-color: #f2f2f2;
-  }
+  background-color: #88c9f7; /* Header background color */
+  color: #fff; /* Header text color */
+  padding: 20px;
+  text-align: center;
+}
 
-  .page1-container {
-    /* ... existing styles ... */
-    opacity: 0;
-    animation: fadeIn 1s ease forwards;
-  }
-  
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-  /* City List Modal Styles */
+h1 {
+  font-size: 36px; /* Increase header font size */
+}
+
+/* Search Bar Styles */
+
+/* Style the search bar */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+#city-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+  width: 200px; /* Adjust input width as needed */
+}
+
+/* Common Button Styles */
+
+/* Style the buttons */
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #3b516b;
+}
+
+/* City List and Add City Button Styles */
+
+/* Style the city list and add city buttons */
+.city-list-button,
+.add-city-button {
+  background-color: #28a745;
+  margin-top: 10px;
+  margin-right: 10px; /* Add margin-right for spacing */
+}
+
+.city-list-button:hover,
+.add-city-button:hover {
+  background-color: #1d7d36;
+}
+
+/* City List Modal Styles */
+
+/* Style the city list modal */
 .city-list-modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    right: 0; /* Adjusted to open the modal on the right side */
-    width: 30%; /* Adjusted to control the width of the modal */
-    height: 100vh;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-  
-  .modal-open {
-    display: block;
-  }
-  
-  .modal-content {
-    background-color: #fefefe;
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 4px;
-    height: 100vh;
-    text-align: center;
-    position: relative;
-  }
-  
-  .close-button {
-    position: absolute;
-    top: 10px; /* Adjusted for better positioning */
-    right: 10px; /* Adjusted for better positioning */
-    padding: 15px; /* Increased close button size */
-    cursor: pointer;
-    font-size: 24px; /* Increased close button size */
-    background-color: #ff5252; /* Highlight color */
-    color: white;
-    border: none;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-  }
-  
-  .close-button:hover {
-    background-color: #ff0000; /* Highlight color on hover */
-  }
-  /* Add styles for the table */
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 30%;
+  height: 100vh;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-open {
+  display: block;
+}
+
+.modal-content {
+  background-color: #fefefe;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  height: 100vh;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Close Button Styles */
+
+/* Style the close button */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 24px;
+  background-color: #ff5252;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: #ff0000;
+}
+
+/* City Data Table Styles */
+
+/* Style the city data table */
 .city-data-container {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  th, td {
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  
-  th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-  }
-  
-  /* Add specific styles for icons */
-  td i {
-    font-size: 24px;
-    margin-right: 5px;
-  }
-  
-  /* Additional styles can be added as per your design */
-  
-  .modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-  }
-  
-  
-  label {
-    display: inline-block; /* Display labels inline */
-    width: 30%; /* Adjust the width based on your design */
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 14px;
-  }
-  
-  input[type="text"] {
-    width: 65%; /* Adjust the width based on your design */
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-  } 
-  /* Style for the buttons */
-  button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #007BFF; /* Blue color, you can change it */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Modal Form Container */
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 80%;
+  margin: 0 auto;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  height: 100%;
+}
+
+/* Modal Title */
+.modal-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #007BFF;
+}
+
+/* Form Label Styles */
+/* Form Label Styles */
+label {
+  display: inline-block; /* Display labels on the same line as inputs */
+  width: 30%; /* Adjust label width as needed */
+  font-weight: bold;
+  font-size: 18px;
+  text-align: right;
+  margin-right: 10px; /* Add margin between label and input */
+  color: #333;
+}
+
+/* Form Input Styles */
+input[type="text"] {
+  display: inline-block; /* Display inputs on the same line as labels */
+  width: 60%; /* Adjust input width as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+input[type="number"] {
+  display: inline-block; /* Display inputs on the same line as labels */
+  width: 60%; /* Adjust input width as needed */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Form Buttons Container */
+.form-buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+
+
+/* Submit Button Styles */
+button[type="submit"] {
+  padding: 12px 24px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Cancel Button Styles */
+button[type="button"] {
+  margin-left: 10px;
+  padding: 12px 24px;
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+button[type="button"]:hover {
+  background-color: #999;
+}
+.city-deleted-message {
+  background-color: #f44336; /* Red background color */
+  color: white; /* White text color */
+  font-size: 24px; /* Font size */
+  padding: 10px; /* Padding */
+  text-align: center; /* Center text */
+  font-weight: bold; /* Bold text */
+  margin-top: 20px; /* Add some top margin for spacing */
+}
+
+/* City Data Table Styles */
+.city-data-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+/* Style the table header */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th,
+td {
+  padding: 12px;
+  border: 1px solid #ddd; /* Light gray border */
+}
+
+th {
+  background-color: #88c9f7; /* Blue background for table header */
+  color: #3b516b; /* White text color */
+  font-weight: bold; /* Bold text */
+}
+
+/* Style the table rows */
+tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+/* Style the icons in the table */
+td i {
+  font-size: 20px;
+  margin-right: 5px;
+  color: #007BFF; /* Blue color for icons */
+  cursor: pointer;
+}
+
+/* Add hover effect for table rows *
+
+/* Add hover effect for icons */
+td i:hover {
+  color: #0056b3; /* Darker blue on icon hover */
+}
+
+/* ... (your existing CSS styles) */
+
+/* Loading Spinner Styles */
+.loader {
+  border: 5px solid #f3f3f3; /* Light gray border */
+  border-top: 5px solid #3498db; /* Blue border on top */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite; /* Rotation animation */
+  margin: 20px auto; /* Centered in the container */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@media (max-width: 768px) {
+  /* Adjust the styles here for small screens */
+  .page1-container {
+    padding: 10px; /* Reduce padding on small screens */
   }
 
-  
-  
-  
-  
-  
+  h1 {
+    font-size: 24px; /* Decrease header font size for small screens */
+  }
+
+  #city-input {
+    width: 100%; /* Make input full width on small screens */
+  }
+
+  .search-bar {
+    flex-direction: column; /* Stack search elements vertically on small screens */
+    align-items: flex-start; /* Align items to the left on small screens */
+    margin-top: 10px; /* Add margin on top for spacing */
+  }
+
+  /* Adjust button styles for small screens */
+  .city-list-button,
+  .add-city-button {
+    margin-top: 10px;
+    margin-right: 0; /* Remove margin-right on small screens */
+    width: 100%; /* Make buttons full width on small screens */
+  }
+
+  /* Adjust modal styles for small screens */
+  .modal-content {
+    width: 100%; /* Make modal full width on small screens */
+    height: auto; /* Allow content to expand on small screens */
+    margin: 0; /* Remove margin for full width on small screens */
+    border-radius: 0; /* Remove border-radius on small screens */
+    box-shadow: none; /* Remove box shadow on small screens */
+  }
+
+  label {
+    width: 100%; /* Make labels full width on small screens */
+    text-align: left; /* Align labels to the left on small screens */
+    margin-right: 0; /* Remove margin-right on small screens */
+  }
+
+  input[type="text"],
+  input[type="number"] {
+    width: 100%; /* Make inputs full width on small screens */
+  }
+
+  /* Adjust table styles for small screens */
+  table {
+    font-size: 14px; /* Decrease font size for small screens */
+  }
+
+  th,
+  td {
+    padding: 8px; /* Reduce padding on small screens */
+  }
+
+  td i {
+    font-size: 16px; /* Decrease icon size for small screens */
+  }
+}
+@media (max-width: 930px) {
+  /* Adjust styles for smaller screens */
+  th, td {
+    padding: 5px; /* Decrease cell padding for smaller screens */
+    display: block; /* Display cells as blocks for stacking on smaller screens */
+    text-align: left;
+  }
+
+  /* Style table header cells */
+  th {
+    background-color: #88c9f7;
+    color: #3b516b;
+    font-weight: bold;
+    text-align: left;
+  }
+}

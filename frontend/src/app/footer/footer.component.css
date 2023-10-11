@@ -1,0 +1,48 @@
+.footer {
+    background-color: #3b516b;
+    padding: 2rem 0;
+  }
+  
+  .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .center {
+    text-align: center;
+  }
+  
+  .text {
+    font-size: small;
+  }
+  
+  .vstack {
+    text-align: center;
+  }
+  
+  .hstack {
+    margin-top: 1rem;
+  }
+  
+  .icon {
+    font-size: 24px;
+  }
+  
+  /* Add any additional styles as needed */
+  /* Responsive styles */
+@media screen and (max-width: 768px) {
+    /* Adjust padding for smaller screens */
+    .footer {
+      padding: 1rem 0;
+    }
+  
+    /* Center align text for smaller screens */
+    .center {
+      text-align: center;
+    }
+  
+    /* Increase font size for small screens */
+    .text {
+      font-size: 14px;
+    }
+  }

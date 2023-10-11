@@ -1,0 +1,45 @@
+.navbar {
+    background-color: #ffef9c; /* Change to the desired color */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Increase navbar width */
+    height:50px;
+  }
+  .outer{
+    background-color: #ffef9c;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  
+  /* Rest of the CSS remains the same */
+  
+  
+  .logo{
+    border: 1px solid white;
+    background-color: white;
+    border-radius: 20px;
+    padding: 5px;
+    height: 30px;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+  
+  .nav-links a:hover {
+    text-decoration: underline;
+  }
+  
+  .nav-links .active {
+    color: #3b516b; /* Color for active link */
+  }
+  
+  
